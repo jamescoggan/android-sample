@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.compose)
+    id("org.jetbrains.kotlin.plugin.parcelize")
 }
 
 android {
@@ -66,4 +69,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Circuit
+    ksp(libs.circuit.codegen)
+    implementation(libs.circuit.foundation)
+    implementation(libs.circuit.overlay)
+    implementation(libs.circuit.retained)
+    implementation(libs.circuitx.android)
+    implementation(libs.circuit.codegen.annotations)
+    implementation(libs.circuitx.gesture.navigation)
+    implementation(libs.circuitx.overlays)
 }

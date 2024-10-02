@@ -4,44 +4,44 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.jamescoggan.sample.ui.theme.AndroidAppSampleTheme
+import com.slack.circuit.foundation.Circuit
+import com.slack.circuit.foundation.CircuitCompositionLocals
+import com.slack.circuit.foundation.CircuitContent
+import com.slack.circuit.runtime.presenter.Presenter
+import com.slack.circuit.runtime.ui.Ui
+import com.slack.circuit.runtime.ui.ui
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // Todo inject with dagger
+        val circuit: Circuit =
+            Circuit.Builder()
+                .addPresenterFactory(buildPresenterFactory())
+                .addUiFactory(buildUiFactory())
+                .build()
+
         setContent {
             AndroidAppSampleTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                CircuitCompositionLocals(circuit) { CircuitContent(HomeScreen) }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AndroidAppSampleTheme {
-        Greeting("Android")
+private fun buildPresenterFactory(): Presenter.Factory =
+    Presenter.Factory { _, _, _ ->
+        HomePresenter()
     }
-}
+
+private fun buildUiFactory(): Ui.Factory =
+    Ui.Factory { _, _ ->
+        ui<HomeScreen.State> { state, modifier -> HomeUi(state, modifier) }
+    }

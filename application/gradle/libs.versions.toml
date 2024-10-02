@@ -1,6 +1,6 @@
 [versions]
 agp = "8.6.1"
-kotlin = "1.9.24"
+kotlin = "2.0.20"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -8,6 +8,15 @@ espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
 composeBom = "2024.09.02"
+circuitxOverlays = "0.24.0"
+circuitxGestureNavigation = "0.24.0"
+circuitCodegenAnnotations = "0.24.0"
+circuitxAndroid = "0.24.0"
+circuitRetained = "0.24.0"
+circuitOverlay = "0.24.0"
+circuitFoundation = "0.24.0"
+circuitCodegen = "0.24.0"
+ksp = "2.0.20-1.0.25"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,8 +33,18 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+circuitx-overlays = { module = "com.slack.circuit:circuitx-overlays", version.ref = "circuitxOverlays" }
+circuitx-gesture-navigation = { module = "com.slack.circuit:circuitx-gesture-navigation", version.ref = "circuitxGestureNavigation" }
+circuit-codegen-annotations = { module = "com.slack.circuit:circuit-codegen-annotations", version.ref = "circuitCodegenAnnotations" }
+circuitx-android = { module = "com.slack.circuit:circuitx-android", version.ref = "circuitxAndroid" }
+circuit-retained = { module = "com.slack.circuit:circuit-retained", version.ref = "circuitRetained" }
+circuit-overlay = { module = "com.slack.circuit:circuit-overlay", version.ref = "circuitOverlay" }
+circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.ref = "circuitFoundation" }
+circuit-codegen = { module = "com.slack.circuit:circuit-codegen", version.ref = "circuitCodegen" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
