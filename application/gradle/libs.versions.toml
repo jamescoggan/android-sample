@@ -7,7 +7,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.2"
-composeBom = "2024.09.02"
+composeBom = "2024.09.03"
 circuitxOverlays = "0.24.0"
 circuitxGestureNavigation = "0.24.0"
 circuitCodegenAnnotations = "0.24.0"
@@ -19,7 +19,8 @@ circuitCodegen = "0.24.0"
 ksp = "2.0.20-1.0.25"
 daggerCompiler = "2.52"
 dagger = "2.52"
-
+anvil = "2.5.0-beta11"
+appcompat = "1.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,10 +47,13 @@ circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.
 circuit-codegen = { module = "com.slack.circuit:circuit-codegen", version.ref = "circuitCodegen" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+kotlin-plugin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+anvil = { id = "com.squareup.anvil", version.ref = "anvil" }

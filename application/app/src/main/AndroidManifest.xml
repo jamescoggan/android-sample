@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".SampleApp"
         android:allowBackup="true"
+        android:appComponentFactory="com.jamescoggan.sample.di.SampleAppComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -11,12 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAppSample"
+        tools:replace="android:appComponentFactory"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AndroidAppSample">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
