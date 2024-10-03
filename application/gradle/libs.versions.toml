@@ -17,6 +17,9 @@ circuitOverlay = "0.24.0"
 circuitFoundation = "0.24.0"
 circuitCodegen = "0.24.0"
 ksp = "2.0.20-1.0.25"
+daggerCompiler = "2.52"
+dagger = "2.52"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +44,8 @@ circuit-retained = { module = "com.slack.circuit:circuit-retained", version.ref 
 circuit-overlay = { module = "com.slack.circuit:circuit-overlay", version.ref = "circuitOverlay" }
 circuit-foundation = { module = "com.slack.circuit:circuit-foundation", version.ref = "circuitFoundation" }
 circuit-codegen = { module = "com.slack.circuit:circuit-codegen", version.ref = "circuitCodegen" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
