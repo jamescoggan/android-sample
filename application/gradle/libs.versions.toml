@@ -21,6 +21,7 @@ daggerCompiler = "2.52"
 dagger = "2.52"
 anvil = "2.5.0-beta11"
 appcompat = "1.7.0"
+coilCompose = "2.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,6 +49,7 @@ circuit-codegen = { module = "com.slack.circuit:circuit-codegen", version.ref = 
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
