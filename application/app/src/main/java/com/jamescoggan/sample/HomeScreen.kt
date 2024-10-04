@@ -12,6 +12,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.jamescoggan.sample.di.AppScope
 import com.jamescoggan.sample.navigation.BottomNavItem
 import com.jamescoggan.sample.navigation.BottomNavigationBar
@@ -73,7 +75,9 @@ class HomePresenter @AssistedInject constructor(
 fun HomeContent(state: HomeScreen.State, modifier: Modifier = Modifier) {
     var contentComposed by rememberRetained { mutableStateOf(false) }
     Scaffold(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 20.dp),
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         containerColor = Color.Transparent,
         bottomBar = {
@@ -90,6 +94,17 @@ fun HomeContent(state: HomeScreen.State, modifier: Modifier = Modifier) {
             screen,
             modifier = Modifier.padding(paddingValues),
             onNavEvent = { event -> state.eventSink(HomeScreen.Event.ChildNav(event)) },
+        )
+    }
+}
+
+@Preview
+@Composable
+fun HomePreview() {
+    AndroidAppSampleTheme {
+        HomeContent(
+            HomeScreen.State(navItems = NAV_ITEMS, selectedIndex = 0) {},
+            modifier = Modifier
         )
     }
 }
