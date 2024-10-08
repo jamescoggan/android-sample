@@ -5,7 +5,7 @@ import androidx.compose.ui.res.stringResource
 import com.jamescoggan.sample.R
 
 enum class RecipeCategory {
-    CHINESE, SPANISH
+    CHINESE, SPANISH, INDIAN
 }
 
 
@@ -17,5 +17,6 @@ data class RecipeUiItem(
 fun RecipeCategory.label(): String = when (this) {
     RecipeCategory.CHINESE -> stringResource(R.string.category_title_chinese)
     RecipeCategory.SPANISH -> stringResource(R.string.category_title_spanish)
+    RecipeCategory.INDIAN -> stringResource(R.string.category_title_indian)
 }
 
