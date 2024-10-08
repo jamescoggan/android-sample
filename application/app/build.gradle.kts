@@ -60,6 +60,7 @@ tasks.withType<KotlinCompile>().matching { it !is KaptGenerateStubsTask }.config
         freeCompilerArgs.addAll(
             "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
             "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
         )
     }
 }
