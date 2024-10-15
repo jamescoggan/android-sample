@@ -26,11 +26,11 @@ import kotlinx.collections.immutable.ImmutableList
 @Composable
 fun RecipeListGrid(
     recipesList: ImmutableList<RecipeUiItem>,
-    isRefreshing: Boolean,
     modifier: Modifier = Modifier,
     onItemClick: (RecipeUiItem) -> Unit,
     onRefresh: () -> Unit
 ) {
+    val isRefreshing = remember { false }
     val pullRefreshState =
         rememberPullRefreshState(refreshing = isRefreshing, onRefresh = onRefresh)
 
@@ -76,6 +76,6 @@ fun RecipeListGrid(
 @Composable
 fun RecipesListGridPreview() {
     AndroidAppSampleTheme {
-        RecipeListGrid(recommendedRecipesSamples, isRefreshing = false, modifier = Modifier, {}, {})
+        RecipeListGrid(recommendedRecipesSamples, modifier = Modifier, {}, {})
     }
 }
