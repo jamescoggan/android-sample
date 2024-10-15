@@ -17,12 +17,11 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jamescoggan.sample.testingData.recommendedRecipesSamples
 import com.jamescoggan.sample.ui.isPortraitMode
-import com.jamescoggan.sample.ui.models.RecipeCategory
 import com.jamescoggan.sample.ui.models.RecipeUiItem
 import com.jamescoggan.sample.ui.theme.AndroidAppSampleTheme
 import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun RecipeListGrid(
@@ -77,20 +76,6 @@ fun RecipeListGrid(
 @Composable
 fun RecipesListGridPreview() {
     AndroidAppSampleTheme {
-        RecipeListGrid(
-            persistentListOf(
-                RecipeUiItem(
-                    id = 0,
-                    title = "Chicken chow mei",
-                    imageUrl = "http://google.com",
-                    category = RecipeCategory.CHINESE
-                ), RecipeUiItem(
-                    id = 1,
-                    title = "Spanish Paella",
-                    imageUrl = "http://google.com",
-                    category = RecipeCategory.SPANISH
-                )
-            ), isRefreshing = false, modifier = Modifier, {}, {}
-        )
+        RecipeListGrid(recommendedRecipesSamples, isRefreshing = false, modifier = Modifier, {}, {})
     }
 }

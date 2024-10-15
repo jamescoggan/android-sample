@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.jamescoggan.sample.R
-import com.jamescoggan.sample.ui.models.RecipeCategory
+import com.jamescoggan.sample.testingData.recommendedRecipesSamples
 import com.jamescoggan.sample.ui.models.RecipeUiItem
 import com.jamescoggan.sample.ui.models.label
 import com.jamescoggan.sample.ui.theme.AndroidAppSampleTheme
@@ -71,12 +71,7 @@ fun RecipeListGridItemPreview() {
                 .width(200.dp)
         ) {
             RecipeListGridItem(
-                RecipeUiItem(
-                    id = 0,
-                    title = "Chicken chow mei",
-                    imageUrl = "http://google.com",
-                    category = RecipeCategory.CHINESE
-                ),
+                recommendedRecipesSamples[0]
             )
         }
     }

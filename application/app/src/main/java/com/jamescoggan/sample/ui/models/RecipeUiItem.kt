@@ -10,7 +10,7 @@ enum class RecipeCategory {
 
 
 data class RecipeUiItem(
-    val id: Int, val title: String, val imageUrl: String, val category: RecipeCategory
+    val id: Int, val title: String, val imageUrl: String, val category: RecipeCategory, val cookingSteps: String
 )
 
 @Composable

@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.sp
 import com.jamescoggan.sample.di.AppScope
-import com.jamescoggan.sample.ui.models.RecipeCategory
+import com.jamescoggan.sample.testingData.recommendedRecipesSamples
 import com.jamescoggan.sample.ui.models.RecipeUiItem
 import com.slack.circuit.codegen.annotations.CircuitInject
 import com.slack.circuit.runtime.CircuitUiEvent
@@ -34,7 +34,6 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -49,8 +48,7 @@ class RecipesScreen : Screen {
             val recipes: ImmutableList<RecipeUiItem>,
             val isRefreshing: Boolean,
             val eventSink: (Event) -> Unit = {}
-        ) :
-            State
+        ) : State
 
     }
 
@@ -75,24 +73,7 @@ class RecipePresenter @AssistedInject constructor(
 
         val recipesState by remember {
             mutableStateOf(
-                persistentListOf(
-                    RecipeUiItem(
-                        id = 0,
-                        title = "Chicken chow mei",
-                        imageUrl = "https://www.cookingclassy.com/wp-content/uploads/2019/01/chow-mein-4.jpg",
-                        category = RecipeCategory.CHINESE
-                    ), RecipeUiItem(
-                        id = 1,
-                        title = "Spanish Paella",
-                        imageUrl = "https://www.jocooks.com/wp-content/uploads/2018/12/paella-1.jpg",
-                        category = RecipeCategory.SPANISH
-                    ), RecipeUiItem(
-                        id = 2,
-                        title = "Butter chicken",
-                        imageUrl = "https://www.simplyrecipes.com/thmb/1SXZ_F1GC6ww_ppWnrdbKgHi9fQ=/2000x1333/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__01__Butter-Chicken-LEAD-2-6ca76f24bbe74114a09958073cb9c76f.jpg",
-                        category = RecipeCategory.INDIAN
-                    )
-                )
+                recommendedRecipesSamples
             )
         }
 
@@ -132,13 +113,10 @@ fun RecipeContent(state: RecipesScreen.State, modifier: Modifier = Modifier) {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        "Adoptables",
-                        fontSize = 22.sp,
-                        color = MaterialTheme.colorScheme.onBackground
+                        "Recipes", fontSize = 22.sp, color = MaterialTheme.colorScheme.onBackground
                     )
                 },
-                colors =
-                TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
                 ),
                 scrollBehavior = scrollBehavior,
@@ -146,29 +124,30 @@ fun RecipeContent(state: RecipesScreen.State, modifier: Modifier = Modifier) {
         },
     ) { paddingValues ->
         when (state) {
-            RecipesScreen.State.Loading ->
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator(
-                        modifier = Modifier,
-                        color = MaterialTheme.colorScheme.onSurface,
-                    )
-                }
-
-            is RecipesScreen.State.Error ->
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(modifier = Modifier, text = state.message)
-                }
-
-            is RecipesScreen.State.Success ->
-                RecipeListGrid(
-                    modifier = Modifier
-                        .padding(paddingValues)
-                        .fillMaxSize(),
-                    recipesList = state.recipes,
-                    isRefreshing = state.isRefreshing,
-                    onItemClick = { state.eventSink(RecipesScreen.Event.OnRecipeSelected(it)) },
-                    onRefresh = { state.eventSink(RecipesScreen.Event.Refresh) }
+            RecipesScreen.State.Loading -> Box(
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator(
+                    modifier = Modifier,
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
+            }
+
+            is RecipesScreen.State.Error -> Box(
+                modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
+            ) {
+                Text(modifier = Modifier, text = state.message)
+            }
+
+            is RecipesScreen.State.Success -> RecipeListGrid(modifier = Modifier
+                .padding(
+                    paddingValues
+                )
+                .fillMaxSize(),
+                recipesList = state.recipes,
+                isRefreshing = state.isRefreshing,
+                onItemClick = { state.eventSink(RecipesScreen.Event.OnRecipeSelected(it.id)) },
+                onRefresh = { state.eventSink(RecipesScreen.Event.Refresh) })
         }
     }
 }
