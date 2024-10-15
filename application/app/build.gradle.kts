@@ -98,6 +98,9 @@ dependencies {
     implementation(libs.circuitx.gesture.navigation)
     implementation(libs.circuitx.overlays)
 
+    // Utils
+    implementation(libs.timber)
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
