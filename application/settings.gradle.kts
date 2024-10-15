@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Android App Sample"
 include(":app")
+include(":data")
