@@ -7,7 +7,7 @@ interface RecipesRepository {
     fun recommendedFlow(): Flow<List<Recipe>>
 }
 
-class RecipesRepositoryiImpl(): RecipesRepository {
+class RecipesRepositoryImpl(): RecipesRepository {
     override fun recommendedFlow(): Flow<List<Recipe>> {
         TODO("Not yet implemented")
     }
