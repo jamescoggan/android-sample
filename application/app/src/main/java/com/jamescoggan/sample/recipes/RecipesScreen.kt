@@ -206,3 +206,43 @@ fun RecipeContent(state: RecipesScreen.State, modifier: Modifier = Modifier) {
         }
     }
 }
+
+@Preview
+@Composable
+fun RecipesScreenSuccessPreview() {
+    AndroidAppSampleTheme {
+        RecipeContent(RecipesScreen.State.Success(
+            recommendedRecipesSamples
+        ) {})
+    }
+}
+
+@Preview
+@Composable
+fun RecipesScreenSuccessError() {
+    AndroidAppSampleTheme {
+        RecipeContent(
+            RecipesScreen.State.Error(
+                stringResource(R.string.resource_error_no_connection)
+            )
+        )
+    }
+}
+
+
+@Preview
+@Composable
+fun RecipesScreenSuccessRefreshing() {
+    AndroidAppSampleTheme {
+        RecipeContent(RecipesScreen.State.Refreshing)
+    }
+}
+
+
+@Preview
+@Composable
+fun RecipesScreenSuccessEmpty() {
+    AndroidAppSampleTheme {
+        RecipeContent(RecipesScreen.State.Empty)
+    }
+}
