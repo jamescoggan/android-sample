@@ -54,7 +54,7 @@ class RecipesScreen : Screen {
 
     sealed interface Event : CircuitUiEvent {
         data object Refresh : Event
-        data class OnRecipeSelected(val recipeUiItem: RecipeUiItem) : Event
+        data class OnRecipeSelected(val recipeId: Int) : Event
     }
 }
 
@@ -87,7 +87,15 @@ class RecipePresenter @AssistedInject constructor(
             isRefreshing -> RecipesScreen.State.Loading
             else -> RecipesScreen.State.Success(recipesState, isRefreshing) { event ->
                 when (event) {
-                    is RecipesScreen.Event.OnRecipeSelected -> TODO() // navigator.goto()
+
+                    is RecipesScreen.Event.OnRecipeSelected -> {
+                        navigator.goTo(
+                            RecipeDetailsScreen(
+                                event.recipeId
+                            )
+                        )
+                    }
+
                     RecipesScreen.Event.Refresh -> isRefreshing = true
                 }
             }
