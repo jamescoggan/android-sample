@@ -3,4 +3,10 @@
     <string name="category_title_chinese">Chinese</string>
     <string name="category_title_spanish">Spanish</string>
     <string name="category_title_indian">Indian</string>
+    <string name="resource_error_fatal">Fatal error:</string>
+    <string name="resource_error_no_connection">No connection</string>
+    <string name="resource_error_not_found">Item not found</string>
+    <string name="resource_error_timed_out">Timed out</string>
+    <string name="resource_error_unauthorised">Unauthorised</string>
+    <string name="no_recipes_available">No recipies currently available, there is probably a proble with the server</string>
 </resources>
