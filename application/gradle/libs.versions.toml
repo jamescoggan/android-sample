@@ -29,6 +29,7 @@ material = "1.12.0"
 timber = "5.0.1"
 robolectric = "4.13"
 turbine = "1.1.0"
+google-truth = "1.4.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -65,6 +66,8 @@ coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+google-truth = { module = "com.google.truth:truth", version.ref = "google-truth" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

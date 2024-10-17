@@ -1,5 +1,6 @@
 package com.jamescoggan.sample
 
+import com.google.common.truth.Truth.assertThat
 import com.jamescoggan.data.model.Recipe
 import com.jamescoggan.data.model.Resource
 import com.jamescoggan.data.repo.RecipesRepository
@@ -10,7 +11,6 @@ import com.slack.circuit.test.test
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
-import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -26,8 +26,8 @@ class RecipesPresenterTest {
         val presenter = RecipePresenter(navigator, repository)
 
         presenter.test {
-            assertThat(awaitItem()).isEqualTo(Loading)
-            assertThat(awaitItem()).isEqualTo(NoAnimals(isRefreshing = false))
+            assertThat(awaitItem()).isEqualTo(RecipesScreen.State.Refreshing)
+            assertThat(awaitItem()).isEqualTo(RecipesScreen.State.Empty)
         }
     }
 }
